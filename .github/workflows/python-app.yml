@@ -37,5 +37,6 @@ jobs:
     - name: Check templates
       run: |
         pip install django
+        pip install django-extensions
         python src/manage.py validate_templates
  
