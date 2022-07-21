@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for person in object_list %}
+    {% if person.type == "teacher" %}
+<ul>
+        <a href= "{% url 'teacher_update' pk=person.id %}"> {{person.id}}: {{person.type}} {{person.first_name}} {{person.last_name}}  </a>
+</ul>
+    {% elif person.type == "student" %}
+<ul>
+        <a href="{% url 'student_detail' pk=person.id %}"> {{person.id}}: {{person.type}} {{person.first_name}} </a>
+</ul>
+    {% endif %}
+{% endfor %}
+
+</body>
+</html>
