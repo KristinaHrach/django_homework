@@ -1,12 +1,26 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import UpdateView, ListView, DetailView
-
+from test_app.email import send
 from test_app.models import Subject, Person
 
 
 def index_template(request):
     return render(request, 'index.html')
+
+
+def send_message(request):
+    send(
+        "Greeting",
+        "kristinahrach@gmail.com",
+        "send_email/email_message",
+    )
+
+    return JsonResponse({
+        "message": "Hello new world"
+
+    })
 
 
 class SubjectDjangoListView(ListView):
