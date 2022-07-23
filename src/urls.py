@@ -16,9 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from test_app.views import index_template
+from test_app.views import index_template, SubjectDjangoListView, SubjectDjangoUpdateView, \
+    TeacherDjangoUpdateView, PersonDjangoListView, PersonDjangoDetailView, send_message
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', index_template),
+    path('send_email', send_message),
+    path('subjects_list', SubjectDjangoListView.as_view(), name="subject_list"),
+    path('persons_list', PersonDjangoListView.as_view(), name="person_list"),
+    path('subjects_update <int:pk>', SubjectDjangoUpdateView.as_view(), name="subject_update"),
+    path('teacher_update <int:pk>', TeacherDjangoUpdateView.as_view(), name="teacher_update"),
+    path('student_detail/<int:pk>', PersonDjangoDetailView.as_view(), name="student_detail"),
+
 ]
