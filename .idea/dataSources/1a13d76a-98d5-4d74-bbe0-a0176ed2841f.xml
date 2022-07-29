@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="db">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.40">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.41">
     <root id="1">
       <ServerVersion>3.36.0</ServerVersion>
     </root>
@@ -1868,46 +1868,50 @@ model</ColNames>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="607" parent="488" name="type_of_person">
-      <DataType>varchar(30)|0s</DataType>
+    <column id="607" parent="488" name="status">
+      <DataType>bool|0s</DataType>
       <NotNull>1</NotNull>
       <Position>7</Position>
     </column>
-    <column id="608" parent="488" name="status">
-      <DataType>bool|0s</DataType>
-      <NotNull>1</NotNull>
+    <column id="608" parent="488" name="social_url">
+      <DataType>varchar(500)|0s</DataType>
       <Position>8</Position>
     </column>
-    <key id="609" parent="488">
+    <column id="609" parent="488" name="type">
+      <DataType>varchar(30)|0s</DataType>
+      <NotNull>1</NotNull>
+      <Position>9</Position>
+    </column>
+    <key id="610" parent="488">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="610" parent="489" name="id">
+    <column id="611" parent="489" name="id">
       <AutoIncrement>1</AutoIncrement>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="611" parent="489" name="created_at">
+    <column id="612" parent="489" name="created_at">
       <DataType>datetime|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="612" parent="489" name="updated_at">
+    <column id="613" parent="489" name="updated_at">
       <DataType>datetime|0s</DataType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="613" parent="489" name="name">
+    <column id="614" parent="489" name="name">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="614" parent="489" name="number_of_lessons">
+    <column id="615" parent="489" name="number_of_lessons">
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <key id="615" parent="489">
+    <key id="616" parent="489">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
