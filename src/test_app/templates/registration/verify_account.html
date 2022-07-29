@@ -1,0 +1,8 @@
+{% extends "send_email/base.html" %}
+
+
+{% block content%}
+Hello {{ username }}
+PLease verify your account by clicking the following link:
+{{ request.scheme }}://{{ request.META.HTTP_HOST }}{{ verify_url }}
+{% endblock%}
