@@ -39,5 +39,6 @@ jobs:
         pip install django
         pip install django-extensions
         pip install python-dotenv
+        pip install djangorestframework
         python src/manage.py validate_templates
  
