@@ -6,8 +6,11 @@ from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic import UpdateView, ListView, DetailView
+from rest_framework import viewsets, permissions
+
 from test_app.email import send
-from test_app.models import Subject, Person
+from test_app.models import Subject, Person, Group
+from test_app.serializers import PersonSerializer, GroupSerializer, SubjectSerializer
 
 USER_MODEL = get_user_model()
 
@@ -125,3 +128,21 @@ def verify_account(request, uid, token):
         return HttpResponse(f'Hello, {user.username}. Your account is verified')
     else:
         return HttpResponse('Invalid link')
+
+
+class PersonViewSet(viewsets.ModelViewSet):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer
+    permission_classes = [permissions.AllowAny]
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class SubjectViewSet(viewsets.ModelViewSet):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectSerializer
+    permission_classes = [permissions.AllowAny]
