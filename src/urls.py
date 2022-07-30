@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path
 
 from test_app.views import index_template, SubjectDjangoListView, SubjectDjangoUpdateView, \
-    TeacherDjangoUpdateView, PersonDjangoListView, PersonDjangoDetailView, send_message, signin, signout
+    TeacherDjangoUpdateView, PersonDjangoListView, PersonDjangoDetailView, send_message, signin, signout, signup, \
+    verify_account
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +30,8 @@ urlpatterns = [
     path('teacher_update <int:pk>', TeacherDjangoUpdateView.as_view(), name="teacher_update"),
     path('student_detail/<int:pk>', PersonDjangoDetailView.as_view(), name="student_detail"),
     path('login', signin, name="login"),
-    path('logout', signout)
+    path('logout', signout),
+    path('signup', signup, name="signup"),
+    path('verify_account/<str:uid>/<str:token>', verify_account, name="verify_account")
 
 ]

@@ -1,0 +1,3 @@
+Hello {{username}}
+PLease verify your account by clicking the following link:
+{{verify_url}}
