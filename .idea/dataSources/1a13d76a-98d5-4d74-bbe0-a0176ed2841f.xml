@@ -1757,7 +1757,7 @@ model</ColNames>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="584" parent="485" name="course_name">
+    <column id="584" parent="485" name="name">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>
@@ -1897,7 +1897,7 @@ model</ColNames>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="613" parent="489" name="subject_name">
+    <column id="613" parent="489" name="name">
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
       <Position>4</Position>

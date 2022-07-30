@@ -1,4 +1,6 @@
-from django.db.models import Model, CharField, IntegerField, DateTimeField, BooleanField
+from django.db.models import Model, CharField, IntegerField, DateTimeField, BooleanField, URLField
+
+from test_app.choices import TypeChoices
 
 
 class DateTimeMixin(Model):
@@ -13,8 +15,9 @@ class Person(DateTimeMixin, Model):
     first_name = CharField(max_length=50)
     last_name = CharField(max_length=50)
     age = IntegerField()
-    type_of_person = CharField(max_length=30)
-    status = BooleanField()
+    type = CharField(max_length=30, choices=TypeChoices.choices)
+    social_url = URLField(max_length=500, null=True)
+    status = BooleanField(default=True)
 
 
 class Group(DateTimeMixin, Model):
@@ -23,12 +26,12 @@ class Group(DateTimeMixin, Model):
 
 
 class Subject(DateTimeMixin, Model):
-    subject_name = CharField(max_length=50)
+    name = CharField(max_length=50)
     number_of_lessons = IntegerField()
 
 
 class Course(DateTimeMixin, Model):
-    course_name = CharField(max_length=50)
+    name = CharField(max_length=50)
     difficulty = CharField(max_length=50)
     number_of_groups = IntegerField()
 
