@@ -1,4 +1,5 @@
-from django.db.models import Model, CharField, IntegerField, DateTimeField, BooleanField, URLField
+from django.db.models import Model, CharField, IntegerField, DateTimeField, BooleanField, \
+    URLField, ForeignKey, CASCADE, OneToOneField
 
 from test_app.choices import TypeChoices
 
@@ -19,6 +20,9 @@ class Person(DateTimeMixin, Model):
     social_url = URLField(max_length=500, null=True)
     status = BooleanField(default=True)
 
+    group = ForeignKey('Group', on_delete=CASCADE, null=True)
+    course = ForeignKey('Course', on_delete=CASCADE, null=True)
+
 
 class Group(DateTimeMixin, Model):
     amount_of_people = IntegerField()
@@ -29,11 +33,16 @@ class Subject(DateTimeMixin, Model):
     name = CharField(max_length=50)
     number_of_lessons = IntegerField()
 
+    lesson = ForeignKey('Lesson', on_delete=CASCADE, null=True)
+
 
 class Course(DateTimeMixin, Model):
     name = CharField(max_length=50)
     difficulty = CharField(max_length=50)
     number_of_groups = IntegerField()
+
+    group = OneToOneField(Group, on_delete=CASCADE, null=True)
+    subject = ForeignKey(Subject, on_delete=CASCADE, null=True)
 
 
 class Lesson(DateTimeMixin, Model):
