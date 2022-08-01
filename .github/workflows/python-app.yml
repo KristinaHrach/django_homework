@@ -40,7 +40,8 @@ jobs:
         pip install django-extensions
         pip install python-dotenv
         pip install djangorestframework
-        pip install  drf-yasg
+        pip install drf-yasg
         pip install django-cors-headers
+        pip install django-filter
         python src/manage.py validate_templates
  
