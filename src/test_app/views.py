@@ -138,7 +138,7 @@ class PersonViewSet(viewsets.ModelViewSet):
     serializer_class = PersonSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = PersonPagePagination
-    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filter_backends = [DjangoFilterBackend, OrderingFilter, ]
     filterset_fields = ['first_name']
     ordering_fields = ['created_at']
 
@@ -148,7 +148,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = GroupPagePagination
-    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filter_backends = [DjangoFilterBackend, OrderingFilter, ]
     filterset_fields = ['name']
     ordering_fields = ['created_at']
 
@@ -158,6 +158,6 @@ class SubjectViewSet(viewsets.ModelViewSet):
     serializer_class = SubjectSerializer
     permission_classes = [permissions.AllowAny]
     pagination_class = SubjectPagePagination
-    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filter_backends = [DjangoFilterBackend, OrderingFilter, ]
     filterset_fields = ['name']
     ordering_fields = ['created_at']
