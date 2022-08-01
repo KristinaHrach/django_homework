@@ -44,5 +44,6 @@ jobs:
         pip install drf-yasg
         pip install django-cors-headers
         pip install django-filter
+        pip install django-crispy-forms
         python src/manage.py validate_templates
  
