@@ -25,6 +25,7 @@ class Person(DateTimeMixin, Model):
 
 
 class Group(DateTimeMixin, Model):
+    name = CharField(max_length=50, null=True)
     amount_of_people = IntegerField()
     place_in_the_rating = IntegerField(null=True)
 

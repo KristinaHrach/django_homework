@@ -6,10 +6,13 @@ from django.urls import reverse_lazy, reverse
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.views.generic import UpdateView, ListView, DetailView
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, permissions
+from rest_framework.filters import OrderingFilter
 
 from test_app.email import send
 from test_app.models import Subject, Person, Group
+from test_app.pagination import PersonPagePagination, GroupPagePagination, SubjectPagePagination
 from test_app.serializers import PersonSerializer, GroupSerializer, SubjectSerializer
 
 USER_MODEL = get_user_model()
@@ -134,15 +137,27 @@ class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
     permission_classes = [permissions.AllowAny]
+    pagination_class = PersonPagePagination
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ['first_name']
+    ordering_fields = ['created_at']
 
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
+    pagination_class = GroupPagePagination
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ['name']
+    ordering_fields = ['created_at']
 
 
 class SubjectViewSet(viewsets.ModelViewSet):
     queryset = Subject.objects.all()
     serializer_class = SubjectSerializer
     permission_classes = [permissions.AllowAny]
+    pagination_class = SubjectPagePagination
+    filter_backends = [DjangoFilterBackend, OrderingFilter]
+    filterset_fields = ['name']
+    ordering_fields = ['created_at']
