@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "django_extensions",
     'rest_framework',
+    'crispy_forms',
     #
     "test_app",
 ]
